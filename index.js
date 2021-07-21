@@ -1,23 +1,13 @@
 const express = require("express");
 const Producto = require("./Producto.js");
-// const hbs = require('express-handlebars')
+
 const routerProductos = express.Router()
 const app = express();
 const PORT = 8080;
-const pug = require('pug');
-//configuracion de handlebars
-// app.engine("hbs",hbs({
-//     extname:"hbs",
-//     defaultLayout:"index.hbs",
-//     layoutsDir:__dirname +"/views/layouts",
-//     partialsDir:__dirname +"/views/partials/"
-// }) )
-// app.set("views", "./views")
-// app.set("view engine", "hbs")
 
-//configuracion de pug
+
 app.set("views", "./views")
-app.set("view engine", "pug")
+app.set("view engine", "ejs")
 
 
 
@@ -39,7 +29,7 @@ app.get("/productos/vista", (req, res) => {
     res.render("main", data.length !== 0 ? {productos:data} : {error: 'no hay productos cargados'})
 })
 app.get("/",(req, res) => {
-    res.render("crearProducto.pug")
+    res.render("crearProducto")
 })
 
 
